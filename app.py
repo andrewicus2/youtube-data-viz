@@ -26,16 +26,20 @@ m1, m2 = st.columns((1,1))
 m1.metric(label ='Number of Channels', value = df.shape[0])
 m2.metric(label ='Avg Subs', value = df["subscribers"].mean())
 
-st.subheader("Top Channels")
-st.bar_chart(data=df_top_subbed, x="Youtuber", y="subscribers", color="#FF0000", use_container_width=True)
+top_channels, by_year, by_location = st.tabs(["Top Channels", "Year", "Location"])
+
+
+
+top_channels.subheader("Top Channels")
+top_channels.bar_chart(data=df_top_subbed, x="Youtuber", y="subscribers", color="#FF0000", use_container_width=True)
 
 group_by_year = df.groupby(['created_year']).size()
 
-st.subheader("Channels by Create Year")
-st.line_chart(group_by_year)
+by_year.subheader("Channels by Create Year")
+by_year.line_chart(group_by_year)
 
-st.subheader("Channels by Location")
-st.map(data=df, latitude="Latitude", longitude="Longitude", color="#FF0000", use_container_width=True)
+by_location.subheader("Channels by Location")
+by_location.map(data=df, latitude="Latitude", longitude="Longitude", color="#FF0000", use_container_width=True)
 
 
 
