@@ -41,11 +41,8 @@ by_year.line_chart(group_by_year)
 by_location.subheader("Channels by Location")
 by_location.map(data=df, latitude="Latitude", longitude="Longitude", color="#FF0000")
 
-
-
 list_variables = df.columns
 user_selection = st.multiselect("Select two variables",list_variables,["Youtuber", "subscribers"])
-
 
 tab1, tab2 = st.tabs(["Line Chart", "Bar Chart"])
 
@@ -54,3 +51,11 @@ tab1.line_chart(data = df, x = user_selection[0], y = user_selection[1])
 
 tab2.title("Bar Chart")
 tab2.bar_chart(data = df, x = user_selection[0], y = user_selection[1])
+
+
+subs_min, subs_max = st.sidebar.slider('Select Subscriber Range', min_value=int(df['subscribers'].min()), max_value=int(df['subscribers'].max()), value=(int(df['subscribers'].min()), int(df['subscribers'].max())))
+
+
+filtered_df = df[(df['subscribers'] >= subs_min) & (df['subscribers'] <= subs_max)]
+
+tab1.line_chart(data = filtered_df, x = "Youtuber", y = "subscribers")
