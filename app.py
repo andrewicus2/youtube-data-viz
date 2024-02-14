@@ -39,7 +39,7 @@ by_year.subheader("Channels by Create Year")
 by_year.line_chart(group_by_year)
 
 by_location.subheader("Channels by Location")
-by_location.map(data=df, latitude="Latitude", longitude="Longitude", color="#FF0000", use_container_width=True)
+by_location.map(data=df, latitude="Latitude", longitude="Longitude", color="#FF0000")
 
 
 
