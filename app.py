@@ -17,7 +17,7 @@ df.drop(101, axis = 0, inplace = True)
 
 # Sort by top subbed
 df_top_subbed = df.head(10)
-df_top_subbed = df_top_subbed.sort_values(by="subscribers", ascending=False)
+df_top_subbed_sort = df_top_subbed.sort_values(by="subscribers", ascending=False)
 
 st.dataframe(df.head(5))
 
@@ -31,7 +31,7 @@ top_channels, by_year, by_location = st.tabs(["Top Channels", "Year", "Location"
 
 
 top_channels.subheader("Top Channels")
-top_channels.bar_chart(data=df_top_subbed, x="Youtuber", y="subscribers", color="#FF0000", use_container_width=True)
+top_channels.bar_chart(data=df_top_subbed_sort, x="Youtuber", y="subscribers", color="#FF0000", use_container_width=True)
 
 group_by_year = df.groupby(['created_year']).size()
 
@@ -57,5 +57,6 @@ subs_min, subs_max = st.sidebar.slider('Select Subscriber Range', min_value=int(
 
 
 filtered_df = df[(df['subscribers'] >= subs_min) & (df['subscribers'] <= subs_max)]
+
 
 st.bar_chart(data = filtered_df, x = "Youtuber", y = "subscribers")
