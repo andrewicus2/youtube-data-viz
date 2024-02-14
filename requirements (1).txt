@@ -1,0 +1,6 @@
+htbuilder
+pandas
+streamlit
+seaborn
+Pillow
+sweetviz
