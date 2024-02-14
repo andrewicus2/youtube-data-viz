@@ -36,3 +36,17 @@ st.line_chart(group_by_year)
 
 st.subheader("Channels by Location")
 st.map(data=df, latitude="Latitude", longitude="Longitude", color="#FF0000", use_container_width=True)
+
+
+
+list_variables = df.columns
+user_selection = st.multiselect("Select two variables",list_variables,["Youtuber", "subscribers"])
+
+
+tab1, tab2 = st.tabs(["Line Chart", "Bar Chart"])
+
+tab1.title("Line Chart")
+tab1.line_chart(data = df, x = user_selection[0], y = user_selection[1])
+
+tab2.title("Bar Chart")
+tab2.bar_chart(data = df, x = user_selection[0], y = user_selection[1])
