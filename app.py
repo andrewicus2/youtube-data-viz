@@ -58,4 +58,4 @@ subs_min, subs_max = st.sidebar.slider('Select Subscriber Range', min_value=int(
 
 filtered_df = df[(df['subscribers'] >= subs_min) & (df['subscribers'] <= subs_max)]
 
-tab1.line_chart(data = filtered_df, x = "Youtuber", y = "subscribers")
+st.bar_chart(data = filtered_df, x = "Youtuber", y = "subscribers")
