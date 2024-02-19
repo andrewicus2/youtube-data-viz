@@ -29,9 +29,8 @@ m2.metric(label ='Avg Subs', value = df["subscribers"].mean())
 top_channels, by_year, by_location = st.tabs(["Top Channels", "Year", "Location"])
 
 
-
-top_channels.subheader("Top Channels")
-top_channels.bar_chart(data=df_top_subbed_sort, x="Youtuber", y="subscribers", color="#FF0000", use_container_width=True)
+top_channels.subheader("The Top Channels")
+top_channels.bar_chart(data=df_top_subbed_sort, x="Youtuber", y="subscribers", color="#000000", use_container_width=True)
 
 group_by_year = df.groupby(['created_year']).size()
 
